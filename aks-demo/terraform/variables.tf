@@ -1,12 +1,12 @@
 variable "prefix" {
   description = "Company/Division prefix"
   type    = string
-  default = "cz001"
+  default = "sf001"
 }
 
 variable "project" {
   type    = string
-  default = "jupiter"
+  default = "maranello"
 }
 
 variable "environment" {
@@ -26,5 +26,5 @@ locals {
 
   # static reference if forced to use pre-existing RG
   resourceGroupName = ""
-  apimName = "apim-${var.prefix}-${var.project}-${var.environment}-${var.location}"
+  aksName = "k8s-${var.prefix}-${var.project}-${var.environment}-${var.location}"
 }
