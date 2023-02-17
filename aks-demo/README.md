@@ -46,12 +46,12 @@ kubectl get all -n nginx
 pod=$(kubectl get pods -A|grep nginx|awk '{print $2}' | head -1) | kubectl get pod $pod -n nginx -o json | jq '.items[].status'
 
 kubectl get rs -A
-export replicaset=$(kubectl get rs -A | grep nginx | awk '{print $2}') | kubectl delete rs $replicaset -n nginx
+replicaset=$(kubectl get rs -A | grep nginx | awk '{print $2}') | kubectl delete rs $replicaset -n nginx
 
 kubectl get services -n nginx
 or
 read ip < <(pod=$(kubectl get pods -A|grep nginx|awk '{print $2}' | head -1) | kubectl get pod $pod -n nginx -o json | jq  -r '.items[0].status.hostIP')
-echo "${shell}:30201"
+echo "${ip}:30201"
 ```
 Curl the above
 
